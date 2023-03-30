@@ -25,3 +25,5 @@ checking for rasp pi availability
 keep an eye on wood prices
 look for deals on amazon or something? steam? idk
 
+https://github.com/topics/flask-dashboard
+home assistant
