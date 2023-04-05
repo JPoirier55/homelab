@@ -27,3 +27,5 @@ look for deals on amazon or something? steam? idk
 
 https://github.com/topics/flask-dashboard
 home assistant
+
+d3.js
