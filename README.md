@@ -29,3 +29,6 @@ https://github.com/topics/flask-dashboard
 home assistant
 
 d3.js
+
+
+https://github.com/hassio-addons/addon-vscode
