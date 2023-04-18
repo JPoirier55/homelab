@@ -33,3 +33,7 @@ d3.js
 
 https://github.com/hassio-addons/addon-vscode
 https://github.com/RomRider/apexcharts-card
+
+https://github.com/arendst/Tasmota
+
+OpenHAB for phone connection outside of network
