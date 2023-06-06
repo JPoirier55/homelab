@@ -37,3 +37,5 @@ https://github.com/RomRider/apexcharts-card
 https://github.com/arendst/Tasmota
 
 OpenHAB for phone connection outside of network
+https://digiblur.com/2021/03/27/how-to-flash-the-wyze-outdoor-plug-esphome-or-tasmota-local-control/
+
