@@ -1,0 +1,77 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Dark background for modern look */
+    color: #E0E0E0; /* Light grey text */
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    color: #BB86FC; /* Soft purple for headings */
+    margin-bottom: 40px;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border: 2px solid #BB86FC;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #1F1B24;
+    color: #E0E0E0;
+    width: 200px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #03DAC6; /* Mint green button */
+    border: none;
+    border-radius: 5px;
+    color: #121212; /* Dark text for contrast */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #3700B3; /* Deeper purple on hover */
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #1F1B24; /* Slightly lighter dark shade for cards */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.weather-icon, .nasa-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 600px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}
