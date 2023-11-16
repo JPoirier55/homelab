@@ -1,0 +1,25 @@
+<h1>Top 5 Books</h1>
+    {% for book in books %}
+        <div class="book-card">
+            <img src="{{ book.volumeInfo.imageLinks.thumbnail }}" alt="{{ book.volumeInfo.title }}">
+            <h3>{{ book.volumeInfo.title }}</h3>
+            <p><strong>Author(s):</strong> {{ book.volumeInfo.authors | join(", ") }}</p>
+            <p>{{ book.volumeInfo.description | truncate(150) }}</p>
+            <form action="/add-book" method="post">
+                <input type="hidden" name="volume_id" value="{{ book.id }}" required>
+                <label for="shelf_id">Choose a Bookshelf:</label>
+                <select name="shelf_id" id="shelf_id">
+                    <option value="0">Favorites</option>
+                    <option value="1">Purchased</option>
+                    <option value="2">To Read</option>
+                    <option value="3">Reading Now</option>
+                    <option value="4">Have Read</option>
+                    <option value="5">Reviewed</option>
+                    <option value="6">Recently Viewed</option>
+                    <option value="7">My eBooks</option>
+                    <option value="8">Books For You</option>
+                </select>
+                <button type="submit">Add Book</button>
+            </form>
+        </div>
+    {% endfor %}

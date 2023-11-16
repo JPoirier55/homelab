@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... existing head elements ... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Book Recommendations</title>
+</head>
+<body>
+    <h1>Bestselling Books</h1>
+    <form action="/add-book" method="post">
+        <input type="text" name="volume_id" placeholder="Enter Book Volume ID">
+        <button type="submit">Add Book to My Library</button>
+    </form>
+    
+    <div class="book-container">
+        {% for book in books %}
+            <div class="card">
+                <h2>{{ book.title }}</h2>
+                <img src="{{ book.thumbnail }}" alt="{{ book.title }} cover" class="book-image">
+                <p>Authors: {{ book.authors|join(', ') }}</p>
+                <p>Average Rating: {{ book.averageRating }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

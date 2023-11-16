@@ -75,3 +75,36 @@ button:hover {
         grid-template-columns: 1fr;
     }
 }
+
+.book-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #03DAC6; /* Example color */
+}
+
+nav ul li a:hover {
+    color: #BB86FC; /* Example hover color */
+}
+

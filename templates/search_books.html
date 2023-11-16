@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Book Search</title>
+</head>
+<body>
+    <h1>Search for Books</h1>
+    <form id="search-form" action="/search-books" method="get">
+        <input type="text" name="query" placeholder="Search..." required>
+        <select name="type">
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="genre">Genre</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="book-container">
+        <!-- ... books will be loaded here ... -->
+    </div>
+
+    <!-- Pagination Controls -->
+    <div class="pagination">
+        <button onclick="goToPage(1)">First</button>
+        <button onclick="goToPage(currentPage - 1)">Prev</button>
+        <span>Page <span id="current-page">1</span></span>
+        <button onclick="goToPage(currentPage + 1)">Next</button>
+        <button onclick="goToPage(totalPages)">Last</button>
+    </div>
+
+    <script>
+        let currentPage = 1;
+        let totalPages = 10;
+
+        document.getElementById('search-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            currentPage = 1; // Reset to first page on new search
+            loadBooksForPage(currentPage);
+        });
+
+        function goToPage(page) {
+            if (page < 1 || page > totalPages) {
+                return; // Do nothing if page is out of range
+            }
+            currentPage = page;
+            document.getElementById('current-page').innerText = currentPage;
+            loadBooksForPage(currentPage*10);
+        }
+
+        function loadBooksForPage(page) {
+            const formData = new FormData(document.getElementById('search-form'));
+            const query = formData.get('query');
+            const type = formData.get('type');
+
+            fetch(`/get-books?page=${page}&query=${query}&type=${type}`)
+                .then(response => response.json())
+                .then(data => {
+                    if(data)
+                    console.log(data)
+                    const bookContainer = document.getElementById('book-container');
+                    
+                    bookContainer.innerHTML = ''; // Clear existing books
+                    console.log(bookContainer)
+
+                    data.forEach(book => {
+                        const bookDiv = document.createElement('div');
+                        bookDiv.className = 'book-card';
+                        bookDiv.innerHTML = `
+                            <img src="${book.volumeInfo.imageLinks.thumbnail}" alt="${book.volumeInfo.title}">
+                            <h3>${book.volumeInfo.title}</h3>
+                            <p><strong>Author(s):</strong> ${book.volumeInfo.authors.join(", ")}</p>
+                            <p>${book.volumeInfo.description}</p>
+                            <!-- Add other book details and form here -->
+                        `;
+                        bookContainer.appendChild(bookDiv);
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Initial load
+        loadBooksForPage(1);
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... existing head elements ... -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Book Recommendations</title>
+</head>
+<body>
+    <h1>Bestselling Books</h1>
+    <div class="book-container">
+        {% for book in books %}
+            <div class="card">
+                <h2>{{ book.title }}</h2>
+                <img src="{{ book.thumbnail }}" alt="{{ book.title }} cover" class="book-image">
+                <p>Authors: {{ book.authors|join(', ') }}</p>
+                <p>Average Rating: {{ book.averageRating }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
